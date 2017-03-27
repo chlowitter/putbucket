@@ -4,8 +4,8 @@
 require 'vendor/autoload.php';
 use Google\Cloud\Storage\StorageClient;
 
-define ("PROJECTID",'intense-attic-156719');
-define ("BUCKETNAME",'chlobucket');
+define ("PROJECTID",'');
+define ("BUCKETNAME",'');
 putenv('GOOGLE_APPLICATION_CREDENTIALS=cred.json');
 $storage = new StorageClient([ 'projectId' => PROJECTID ]);
 $bucket = $storage->bucket(BUCKETNAME);
