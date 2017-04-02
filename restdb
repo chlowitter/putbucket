@@ -58,6 +58,24 @@ function get($request, $mysql) {
   printf ("%s (%s)\n",$row["name"],$row["lastName"],$row["age"],$row["zip"], $row["email"]);
 }
 
+funcion put($request, $mysql){
+   if (isset($request[0])) {
+    $name=$request[0];
+    $lastName=$request[1];
+    $age=$request[2];
+    $zip=$request[3];
+    $email=$request[4];
+    $sql="SELECT id from entries where name='$name'"; 
+    $result = $mysqli->query($sql); echo $mysqli->error;
+    while ($result->num_rows > 0) {
+        $sql = "UPDATE entries SET name='$name', lastName='$lastName', age='$age', zip='$zip' WHERE name=$name"; 
+        echo json_encode(array("name"=>$name,"action" => "created"));
+    }
+}
+    else { 
+        http_response_code(404); echo $mysqli->error; 
+    }
+}
 
 $host='';
 $dbuser='';
